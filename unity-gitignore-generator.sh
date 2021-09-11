@@ -28,12 +28,13 @@ die() {
     exit "$code"
 }
 
-CURRENT_DIR="$(pwd)"
-
 parse_params() {
     while :; do
         case "${1-}" in
-        -h | --help) usage ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
         -?*) die "Unknown option: $1" ;;
         *) break ;;
         esac
@@ -44,6 +45,13 @@ parse_params() {
 }
 
 parse_params "$@"
+
+result=0
+find ".git/" -type d &>/dev/null || result=$?
+if [[ "${result}" -ne 0 ]]; then
+    msg "[ERROR] Please move to the same directory hierarchy as .git directory."
+    exit 1
+fi
 
 echo "# This .gitignore file should be placed at the root of your Unity project directory
 #
