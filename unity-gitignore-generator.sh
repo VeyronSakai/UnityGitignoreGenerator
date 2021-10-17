@@ -62,7 +62,7 @@ echo "# This .gitignore file should be placed at the root of your Unity project 
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Ll]ogs/å
+/[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
